@@ -1,0 +1,50 @@
+#Application Config
+spring:
+  application:
+    name: esafebox
+    description: EC SafeBox
+  datasource:
+    platform: oracle
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+
+    jmx-enabled: true
+    initialization-mode: never
+    url: jdbc:oracle:thin:@10.10.32.200:1521/eccore
+    username: ECBOX
+    password: ECBOX
+  jpa:
+    database: ORACLE
+    show-sql: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate.jdbc.lob.non_contextual_creation: true
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.yaml
+    default-schema: ECBOX 
+    
+server:
+  port: 8014
+  servlet.context-path: /esafebox
+
+#Eureka Config
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://10.10.32.102:8761/eureka
+    eureka-server-por: 8761
+    fetchRegistry: true
+    registerWithEureka: true
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+
+ribbon:
+  eureka:
+    enabled: true
+
+hazelcast:
+  group-name: dev
+  group-password: dev-pass
+  instance-name: Cached-development-instance
+  network-address: ["10.10.32.100:5701", "10.10.32.103:5701"]

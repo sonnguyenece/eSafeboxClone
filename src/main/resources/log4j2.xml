@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+    <Properties>
+        <Property name="LOG_PATTERN">
+            [%d{dd/MM/yyyy HH:mm:ss,SSS}] %m%n
+        </Property>
+        <property name="log.file.path">target/log/ecbox</property>
+        <!--<property name="log.file.path">/APPS/STORE/log</property>-->
+    </Properties>
+
+    <Appenders>
+        <Console name="ConsoleAppender" target="SYSTEM_OUT" follow="true">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </Console>
+
+        <RollingFile name="application" fileName="${log.file.path}/application/application.log"
+                     filePattern="${log.file.path}/application/application-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout>
+                <Pattern>${LOG_PATTERN}</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+                <SizeBasedTriggeringPolicy size="10MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="100"/>
+        </RollingFile>
+
+        <RollingFile name="common" fileName="${log.file.path}/common/common.log"
+                     filePattern="${log.file.path}/common/common-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout>
+                <Pattern>${LOG_PATTERN}</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+                <SizeBasedTriggeringPolicy size="10MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="100"/>
+        </RollingFile>
+
+        <RollingFile name="api" fileName="${log.file.path}/api/api.log"
+                     filePattern="${log.file.path}/api/api-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout>
+                <Pattern>${LOG_PATTERN}</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+                <SizeBasedTriggeringPolicy size="10MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="100"/>
+        </RollingFile>
+
+        
+        <RollingFile name="service" fileName="${log.file.path}/service/service.log"
+                     filePattern="${log.file.path}/service/service-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout>
+                <Pattern>${LOG_PATTERN}</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+                <SizeBasedTriggeringPolicy size="50MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+
+        <RollingFile name="db" fileName="${log.file.path}/db/db.log"
+                     filePattern="${log.file.path}/db/db-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout>
+                <Pattern>${LOG_PATTERN}</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+                <SizeBasedTriggeringPolicy size="50MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="application" level="info" additivity="false">
+            <AppenderRef ref="application"/>
+            <AppenderRef ref="ConsoleAppender"/>
+        </Logger>
+        <Logger name="common" level="info" additivity="false">
+            <AppenderRef ref="common"/>
+            <AppenderRef ref="ConsoleAppender"/>
+            <AppenderRef ref="application"/>
+        </Logger>
+        <Logger name="db" level="info" additivity="false">
+            <AppenderRef ref="db"/>
+            <AppenderRef ref="ConsoleAppender"/>
+            <AppenderRef ref="application"/>
+        </Logger>
+        
+        <Logger name="service" level="info" additivity="false">
+            <AppenderRef ref="service"/>
+            <AppenderRef ref="ConsoleAppender"/>
+            <AppenderRef ref="application"/>
+        </Logger>
+        <Logger name="api" level="info" additivity="false">
+            <AppenderRef ref="api"/>
+            <AppenderRef ref="ConsoleAppender"/>
+            <AppenderRef ref="application"/>
+        </Logger>
+        
+        <Root level="info">
+            <AppenderRef ref="ConsoleAppender"/>
+        </Root>
+    </Loggers>
+</Configuration>
