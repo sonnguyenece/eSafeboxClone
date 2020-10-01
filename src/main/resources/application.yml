@@ -24,7 +24,7 @@ spring:
 #    default-schema: ECBOX
     
 server:
-  port: 8014
+  port: 8080
   servlet.context-path: /esafebox
 
 ##Eureka Config

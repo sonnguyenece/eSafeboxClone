@@ -162,10 +162,10 @@
         <!--  Eureka --> 
 <!--  -->
         <!--  Liquibase --> 
-        <dependency>
-            <groupId>org.liquibase</groupId>
-            <artifactId>liquibase-core</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.liquibase</groupId>-->
+<!--            <artifactId>liquibase-core</artifactId>-->
+<!--        </dependency>-->
         <dependency>
 		    <groupId>org.apache.commons</groupId>
 		    <artifactId>commons-math3</artifactId>
@@ -251,21 +251,21 @@
                 </executions>
             </plugin>
 
-            <!-- Liquibase plugin -->
-            <plugin>
-                <groupId>com.ecpay.eccore</groupId>
-                <artifactId>eccore-liquibase-plugin</artifactId>
-                <version>1.0</version>
-                <executions>
-                    <!-- execution>
-                        <id>make-change-log-file</id>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>generateChangeLog</goal>
-                        </goals>
-                    </execution -->
-                </executions>
-            </plugin>
+<!--            &lt;!&ndash; Liquibase plugin &ndash;&gt;-->
+<!--            <plugin>-->
+<!--                <groupId>com.ecpay.eccore</groupId>-->
+<!--                <artifactId>eccore-liquibase-plugin</artifactId>-->
+<!--                <version>1.0</version>-->
+<!--                <executions>-->
+<!--                    &lt;!&ndash; execution>-->
+<!--                        <id>make-change-log-file</id>-->
+<!--                        <phase>validate</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>generateChangeLog</goal>-->
+<!--                        </goals>-->
+<!--                    </execution &ndash;&gt;-->
+<!--                </executions>-->
+<!--            </plugin>-->
         </plugins>
     </build>
 
